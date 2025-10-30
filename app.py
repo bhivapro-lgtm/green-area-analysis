@@ -134,10 +134,10 @@ elif page == "👨‍💻 Team Info":
     st.markdown("""
     **Developed by Students of SSPM College of Engineering, Kankavli**
     
-    - Rohit Vitthal Desai  
-    - [Student 2 Name]  
-    - [Student 3 Name]  
-    - [Student 4 Name]
+    - Shreyash.S.Adkar  
+    - Pritesh.U.Patade 
+    - Kaustubh.S.Pawar  
+    - Harshwardhan.S.Karanjekar
     
     🌱 Under the project: *Green Area Analysis By Satellite Imaging*
     """)
@@ -145,3 +145,4 @@ elif page == "👨‍💻 Team Info":
 # ───────────────────────────────────────────────
 # END OF FILE
 # ───────────────────────────────────────────────
+
