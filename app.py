@@ -36,7 +36,20 @@ st.markdown("""
         border-radius: 10px;
         border-left: 5px solid #4CAF50;
         margin: 1rem 0;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
     }
+    .village-card h2 {
+        color: #1B5E20;
+        font-weight: bold;
+        background: linear-gradient(90deg, #66BB6A, #43A047);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
     .metric-card {
         background: #F1F8E9;
         padding: 1rem;
@@ -177,5 +190,6 @@ elif page == "👨‍💻 Team Info":
 
 # END OF FILE
 # ───────────────────────────────────────────────
+
 
 
