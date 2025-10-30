@@ -100,34 +100,62 @@ elif page == "🧠 CNN Training":
 elif page == "🔍 Village Search":
     st.markdown("## 🔍 Village Green Area Search")
 
+    # ✅ List of 95 valid Kankavli villages
+    valid_villages = [
+        "Anandnagar", "Asalade", "Ashiye", "Audumbarnagar", "Avaleshwar (N.V.)",
+        "Ayanal", "Bandargaon", "Bavshi", "Belne Kh", "Berle", "Bhairavgaon",
+        "Bharni", "Bhiravande", "Bidwadi", "Bordave", "Chinchwali", "Dabgaon",
+        "Dakshin Bajar Peth", "Damare", "Dariste", "Darum", "Dhareshwar",
+        "Digavale", "Gandhinagar", "Gangeshwar", "Ghonsari", "Halaval",
+        "Harkul Bk.", "Harkul Kh.", "Humarat", "Humbarane", "Jambhalgaon",
+        "Jambhalnagar", "Janavali", "Kajirde", "Kalasuli", "Kalmath",
+        "Karanje", "Karul", "Kasaral", "Kasarde", "Kasavan", "Kharepatan",
+        "Koloshi", "Kondye", "Kumbhavade", "Kurangavne", "Lingeshwar",
+        "Lingeshwar Nagar", "Lore", "Main", "Math Kh.", "Nadgive", "Nagave",
+        "Nagsawantwadi", "Nandgaon", "Nardave", "Natal", "Navanagar",
+        "Nehru Nagar", "Osargaon", "Otav", "Ozaram", "Phanas Nagar",
+        "Phondaghat", "Pimpaleshwar Nagar", "Pimpalgaon", "Pise Kamate",
+        "Piyali", "Rajnagar", "Rameshwarnagar", "Ranjangaon", "Sakedi",
+        "Saliste", "Sambhajinagar", "Sangave", "Satral", "Savdav",
+        "Shastrinagar", "Sherpe", "Shidavne", "Shiraval", "Shivajinagar",
+        "Shivajipeth", "Shivdav", "Shrinagar", "Subhash Nagar", "Talavade",
+        "Tarandale", "Tarele", "Tiware", "Tondavali", "Ulhasnagar",
+        "Upanagar", "Uttamnagar", "Uttar Bajar Peth", "Uttargavthan",
+        "Varavade", "Wagade", "Wagheri", "Waingani", "Wargaon", "Yevteshwargaon"
+    ]
+
     village_name = st.text_input("Enter village name", placeholder="e.g., Gandhinagar, Bandargaon, Anandnagar")
     analyze_button = st.button("🚀 Analyze Village")
 
     if analyze_button and village_name:
-        with st.spinner("Analyzing satellite data... Please wait 4–5 seconds..."):
-            time.sleep(4.5)  # ⏳ Simulated processing delay
+        if village_name.strip().title() in valid_villages:
+            with st.spinner("Analyzing satellite data... Please wait 4–5 seconds..."):
+                time.sleep(4.5)  # ⏳ Simulated processing delay
 
-        # Dummy result simulation
-        cnn_green = np.random.uniform(50, 80)
-        ndvi_green = cnn_green - np.random.uniform(10, 15)
+            # Dummy data simulation
+            cnn_green = np.random.uniform(50, 80)
+            ndvi_green = cnn_green - np.random.uniform(10, 15)
 
-        st.markdown(f"""
-        <div class="village-card">
-            <h2>🏘️ {village_name.title()}</h2>
-            <p><strong>Tehsil:</strong> Kankavli | <strong>District:</strong> Sindhudurg</p>
-        </div>
-        """, unsafe_allow_html=True)
+            st.markdown(f"""
+            <div class="village-card">
+                <h2>🏘️ {village_name.title()}</h2>
+                <p><strong>Tehsil:</strong> Kankavli | <strong>District:</strong> Sindhudurg</p>
+            </div>
+            """, unsafe_allow_html=True)
 
-        col1, col2 = st.columns(2)
-        with col1:
-            st.metric("🌿 CNN Green Coverage", f"{cnn_green:.1f}%", delta=f"+{cnn_green - ndvi_green:.1f}% vs NDVI")
-        with col2:
-            st.metric("📊 NDVI Estimate", f"{ndvi_green:.1f}%")
+            col1, col2 = st.columns(2)
+            with col1:
+                st.metric("🌿 CNN Green Coverage", f"{cnn_green:.1f}%", delta=f"+{cnn_green - ndvi_green:.1f}% vs NDVI")
+            with col2:
+                st.metric("📊 NDVI Estimate", f"{ndvi_green:.1f}%")
 
-        methods = ["CNN", "NDVI", "GNDVI", "EVI", "SAVI"]
-        values = [cnn_green, ndvi_green, ndvi_green - 2, ndvi_green - 1, ndvi_green - 3]
-        fig = px.bar(x=methods, y=values, title=f"Green Coverage Comparison - {village_name.title()}")
-        st.plotly_chart(fig, use_container_width=True)
+            methods = ["CNN", "NDVI", "GNDVI", "EVI", "SAVI"]
+            values = [cnn_green, ndvi_green, ndvi_green - 2, ndvi_green - 1, ndvi_green - 3]
+            fig = px.bar(x=methods, y=values, title=f"Green Coverage Comparison - {village_name.title()}")
+            st.plotly_chart(fig, use_container_width=True)
+
+        else:
+            st.error("❌ Village not found in Kankavli dataset. Please check the spelling or try another name.")
 
 elif page == "👨‍💻 Team Info":
     st.markdown("## 👨‍💻 Development Team")
@@ -139,10 +167,15 @@ elif page == "👨‍💻 Team Info":
     - Kaustubh.S.Pawar  
     - Harshwardhan.S.Karanjekar
     
+    
     🌱 Under the project: *Green Area Analysis By Satellite Imaging*
     """)
 
 # ───────────────────────────────────────────────
 # END OF FILE
 # ───────────────────────────────────────────────
+
+# END OF FILE
+# ───────────────────────────────────────────────
+
 
